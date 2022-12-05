@@ -20,11 +20,22 @@ public class JpaMain {
 
         // JPA의 모든 데이터 변경은 트랜잭션 안에서 실행
         try {
-            Member member = new Member();
-            member.setId(1L);
-            member.setName("Hello");
 
-            em.persist(member);
+            // 영속
+            Member findMember1 = em.find(Member.class, 101L);
+            Member findMember2 = em.find(Member.class, 101L);
+
+//            em.persist(member);
+
+//            영속성 컨텍스트의 변경 내용을 데이터베이스에 동기화
+//            em.flush();
+
+//            특정 엔티티만 준영속 상태로 전환(더 이상 JPA에서 관리 X)
+//            em.detach(member);
+//            영속성 컨텍스트를 완전히 초기화
+//            em.clear();
+//            영속성 컨텍스트를 종료
+//            em.close();
 
             tx.commit();
         } catch (Exception e) {
