@@ -22,10 +22,13 @@ public class JpaMain {
         try {
 
             // 영속
-            Member findMember1 = em.find(Member.class, 101L);
-            Member findMember2 = em.find(Member.class, 101L);
+//            Member findMember1 = em.find(Member.class, 101L);
+//            Member findMember2 = em.find(Member.class, 101L);
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("fuck");
 
-//            em.persist(member);
+            em.persist(member);
 
 //            영속성 컨텍스트의 변경 내용을 데이터베이스에 동기화
 //            em.flush();
