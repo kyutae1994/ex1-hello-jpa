@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 )
 public class Member {
 
-    @Id @GeneratedValue(generator = "MEMBER_SEQ_GENERATOR")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "MEMBER_SEQ_GENERATOR")
     private Long id;
 
     @Column(name = "name")
