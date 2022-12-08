@@ -1,35 +1,33 @@
 package hello.jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Member {
 
     @Id
     private Long id;
+    @Column(name = "name")
     private String name;
+
+    private Integer age;
+
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP) // DATE 날짜, TIME 시간, TIMESTAMP 날짜+시간
+    private LocalDateTime lastModifiedDate;
+
+    @Lob // 글자 긴거 넣을 때
+    private String description;
+
+    @Transient // 필드 매핑 X
+    private String temp;
 
     public Member(){}
 
-    public Member(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
