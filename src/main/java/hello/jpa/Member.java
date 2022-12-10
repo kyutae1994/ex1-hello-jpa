@@ -1,26 +1,23 @@
 package hello.jpa;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@SequenceGenerator(
-        name = "MEMBER_SEQ_GENERATOR",
-        sequenceName = "MEMBER_SEQ", //매칭할 데이터베이스 시퀀스 이름
-        initialValue = 1, allocationSize = 50 // 미리 db에 50개 올려놓고 메모리에서 1씩 쓴다
-)
 public class Member {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "MEMBER_SEQ_GENERATOR")
+    @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "username")
     private String userName;
 
-    public Member(){}
+//    @Column(name = "team_id")
+//    private Long teamId;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     public Long getId() {
         return id;
@@ -36,5 +33,13 @@ public class Member {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
