@@ -35,11 +35,11 @@ public class Member {
         this.userName = userName;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Team getTeam() {
+        return team;
     }
 }
