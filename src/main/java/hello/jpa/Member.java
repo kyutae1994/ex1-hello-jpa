@@ -12,12 +12,13 @@ public class Member {
     @Column(name = "username")
     private String userName;
 
-//    @Column(name = "team_id")
-//    private Long teamId;
-
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
+
+    @OneToOne
+    @JoinColumn(name = "locker_id")
+    private Locker locker;
 
     public Long getId() {
         return id;
