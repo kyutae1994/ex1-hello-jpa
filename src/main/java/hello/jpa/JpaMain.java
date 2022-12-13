@@ -22,16 +22,12 @@ public class JpaMain {
         // JPA의 모든 데이터 변경은 트랜잭션 안에서 실행
         try {
 
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
-            Member member = new Member();
-            member.setUserName("member1");
-            em.persist(member);
-
-            team.addMember(member);
-
+            Movie movie = new Movie();
+            movie.setDirector("A");
+            movie.setActor("b");
+            movie.setName("apple");
+            movie.setPrice(10000);
+            em.persist(movie);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
