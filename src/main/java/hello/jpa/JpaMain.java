@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class JpaMain {
@@ -22,12 +23,12 @@ public class JpaMain {
         // JPA의 모든 데이터 변경은 트랜잭션 안에서 실행
         try {
 
-            Movie movie = new Movie();
-            movie.setDirector("A");
-            movie.setActor("b");
-            movie.setName("apple");
-            movie.setPrice(10000);
-            em.persist(movie);
+            Member member = new Member();
+            member.setUserName("user");
+            member.setCreatedBy("Kim");
+            member.setCreatedDate(LocalDateTime.now());
+
+            em.persist(member);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
