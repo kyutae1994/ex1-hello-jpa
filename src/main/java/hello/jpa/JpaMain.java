@@ -21,22 +21,21 @@ public class JpaMain {
         // JPA의 모든 데이터 변경은 트랜잭션 안에서 실행
         try {
 
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
+            Child child1 = new Child();
+            Child child2 = new Child();
 
-            Member member1 = new Member();
-            member1.setUserName("member1");
-            member1.setTeam(team);
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
 
-            em.persist(member1);
+            em.persist(parent);
 
             em.flush();
             em.clear();
 
-            Member m1 = em.find(Member.class, member1.getId());
+            Parent findParent = em.find(Parent.class, parent.getId());
+            findParent.getChildList().remove(0);
 
-            System.out.println("m1 " + m1.getTeam().getClass());
 
             tx.commit();
         } catch (Exception e) {
