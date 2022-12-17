@@ -11,7 +11,6 @@ public abstract class BaseEntity {
     private String lastModifiedBy;
     private LocalDateTime lastModifiedDate;
 
-
     public String getCreatedBy() {
         return createdBy;
     }
