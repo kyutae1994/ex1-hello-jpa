@@ -21,12 +21,6 @@ public class JpaMain {
         // JPA의 모든 데이터 변경은 트랜잭션 안에서 실행
         try {
 
-            Member member =new Member();
-            member.setUserName("hello");
-            member.setHomeAddress(new Address("city", "street", "100-100"));
-            member.setWorkPeriod(new Period());
-
-            em.persist(member);
 
             tx.commit();
         } catch (Exception e) {
